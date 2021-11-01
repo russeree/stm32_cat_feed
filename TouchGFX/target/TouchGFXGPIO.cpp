@@ -68,7 +68,7 @@ void GPIO::toggle(GPIO_ID id)
  */
 bool GPIO::get(GPIO_ID id)
 {
-    return false;
+  return false;
 }
 
 /* USER CODE END TouchGFXGPIO.cpp */

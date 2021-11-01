@@ -130,47 +130,131 @@
     <Filter Include="Source Files\generated\simulator">
       <UniqueIdentifier>{C07B02B9-A55E-47AA-AD61-59A6AAD754E6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui">
-      <UniqueIdentifier>4E8FA503-3088-417C-B334-94F52771717E</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\gui">
-      <UniqueIdentifier>8AAFFEEA-A4D1-54F5-A8AB-261AB58171B2</UniqueIdentifier>
+      <UniqueIdentifier>6CFCFB5C-135D-53C0-3F4D-E08480B19391</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui">
+      <UniqueIdentifier>7B10BF08-9FE3-B0D2-C19C-3678F5032216</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\common">
-      <UniqueIdentifier>5A5C9B87-F881-63FE-4915-C802246C4585</UniqueIdentifier>
+      <UniqueIdentifier>29CE96C9-4711-ADC2-6BE2-942BDE49E709</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\generated\gui_generated">
-      <UniqueIdentifier>CE06F9C4-BCF6-2045-B335-4FF5F57735FB</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\main_screen">
-      <UniqueIdentifier>181C51E0-51AB-982F-5D51-A206DC44AD9C</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\common">
-      <UniqueIdentifier>0D7F8B42-28D0-3F7F-D0AA-400624649887</UniqueIdentifier>
+      <UniqueIdentifier>5CCBD151-7B27-F9C6-B3DC-3C97CC746A9B</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\model">
-      <UniqueIdentifier>AB79E476-3FC4-E42D-7F10-0DBF6F663880</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\main_screen">
-      <UniqueIdentifier>D6E40525-DF6D-6690-A135-BE6D3CC7ED17</UniqueIdentifier>
+      <UniqueIdentifier>F4A2DD78-87DC-AB0F-CDD1-22FBEB3F2365</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\generated\gui_generated">
-      <UniqueIdentifier>60A6F59C-2C2B-35CE-B15E-6042383891CF</UniqueIdentifier>
+      <UniqueIdentifier>023B2072-14BD-5EEE-A966-90CD3B3DB7F7</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\model">
-      <UniqueIdentifier>455C9EFA-8E46-CC6B-FE74-8B6F067C3687</UniqueIdentifier>
+      <UniqueIdentifier>87D7D943-C3F9-511C-0F5E-5F8623FCD9A3</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\main_screen">
-      <UniqueIdentifier>0F4613BF-3E88-DB25-E1C8-44B3D013D6EE</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\main_screen">
-      <UniqueIdentifier>71BD70CB-3FBD-A0C0-FDBF-8DA5162C2594</UniqueIdentifier>
+    <Filter Include="Source Files\gui\common">
+      <UniqueIdentifier>14245B4C-D681-F2A6-EC60-1C73D305900F</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\generated\gui_generated\common">
-      <UniqueIdentifier>568EE925-412C-1AB9-8259-1326FD6AA71D</UniqueIdentifier>
+      <UniqueIdentifier>A1F79CB4-5C78-0A12-58B0-6C2B8037C596</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\generated\gui_generated\common">
-      <UniqueIdentifier>6657F22C-1F07-6522-4BC2-3BFAE1A4D780</UniqueIdentifier>
+      <UniqueIdentifier>DBB34D6D-A987-EAF9-A29E-B5C42B5F9DF3</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\main_menu_screen">
+      <UniqueIdentifier>FA326B38-0D70-E301-4775-56570CD13FFA</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\main_menu_screen">
+      <UniqueIdentifier>7CE387D6-8FB9-27D5-BB0A-59A27AE374FD</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\main_menu_screen">
+      <UniqueIdentifier>1ACAF640-DD31-54DF-C80F-C82BCA5413AE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\main_menu_screen">
+      <UniqueIdentifier>7636C0E2-03E3-C151-F826-FFD1FC8D991F</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\pinsetupnotesparttwo_screen">
+      <UniqueIdentifier>0CDEBCD8-6B33-4412-3CC5-2260AF3053FC</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\pinsetupnotesparttwo_screen">
+      <UniqueIdentifier>CE3FF07F-143F-FAC1-40A2-6170EDCBE86D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\pinsetupnotesparttwo_screen">
+      <UniqueIdentifier>209174D8-B203-CBFD-03EC-79C30357E8A3</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\pinsetupnotesparttwo_screen">
+      <UniqueIdentifier>82C20B5F-4636-33D3-9878-3A092E78C4B0</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\pinsetupcompletenotes_screen">
+      <UniqueIdentifier>1331A6C3-B2C3-0AE2-D57C-21B2DAC5241A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\pinsetupcompletenotes_screen">
+      <UniqueIdentifier>71F3A1F0-51DE-4416-4C67-4BCF9BE0677D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\pinsetupcompletenotes_screen">
+      <UniqueIdentifier>F2CE8774-56D8-D2DF-78DE-8F258A9FBF7B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\pinsetupcompletenotes_screen">
+      <UniqueIdentifier>B76D2CAF-FC81-A211-CC8B-0E507BF3F44A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\seedphrasesetupdisplay_screen">
+      <UniqueIdentifier>A5FAA6AC-47CF-04D9-2908-9CD2F2B2A36D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\seedphrasesetupdisplay_screen">
+      <UniqueIdentifier>EAE99F0E-6877-3850-4BA8-19AF3C03DDEC</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\seedphrasesetupdisplay_screen">
+      <UniqueIdentifier>19AD4170-5801-C65D-49D8-CC7512D7F825</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\seedphrasesetupdisplay_screen">
+      <UniqueIdentifier>023D9294-5DA6-2B01-FEAD-6B696909A462</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\containers">
+      <UniqueIdentifier>CAF01802-CECE-CAF9-1202-3E0A9A12E8CB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\containers">
+      <UniqueIdentifier>73F6D2EE-AED1-8A71-D31E-481AC8119990</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\containers">
+      <UniqueIdentifier>D480F8C3-7A96-D405-FD30-F9FE8CA5995A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\containers">
+      <UniqueIdentifier>6E1260D1-01A4-A7F5-CBE3-3409E0FBC7EA</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\unlockscreen_screen">
+      <UniqueIdentifier>B9B9D517-A4D9-3964-C979-07CCD281F45E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\unlockscreen_screen">
+      <UniqueIdentifier>6AA571B6-648D-17CC-B78C-0F891C7FDA8D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\unlockscreen_screen">
+      <UniqueIdentifier>36FDA0D9-4279-9C7B-9EDC-EC3F8B8C7EB5</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\unlockscreen_screen">
+      <UniqueIdentifier>9BE00B4F-D15C-B29C-53EF-D6F7F89E476F</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\antiphishingemoji_screen">
+      <UniqueIdentifier>C41D9183-B50D-6247-872F-A7E9F2F8E366</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\antiphishingemoji_screen">
+      <UniqueIdentifier>77ADD8F2-EC72-FD6A-1079-6C78D084C9F3</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\antiphishingemoji_screen">
+      <UniqueIdentifier>FDBFA940-444C-4CAA-C73E-14B7B33ED8E8</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\antiphishingemoji_screen">
+      <UniqueIdentifier>CD033ED2-E14C-E0F1-AD69-F4735F409A68</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\pinsetup_screen">
+      <UniqueIdentifier>83EF1896-79FE-2E29-4626-797648D609F1</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\pinsetup_screen">
+      <UniqueIdentifier>AD618AAE-818B-C1E9-306E-051220A311A4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\pinsetup_screen">
+      <UniqueIdentifier>DB2E70D3-DCB8-1F53-0094-BB35FCD5AEC4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\pinsetup_screen">
+      <UniqueIdentifier>4F48848A-1B4C-B95D-DF1B-C0CE06B102FF</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -198,17 +282,89 @@
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp">
       <Filter>Source Files\generated\gui_generated\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp">
-      <Filter>Source Files\gui\main_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp">
-      <Filter>Source Files\gui\main_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\main_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\model\Model.cpp">
       <Filter>Source Files\gui\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\main_menu_screen\main_menuPresenter.cpp">
+      <Filter>Source Files\gui\main_menu_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\main_menu_screen\main_menuView.cpp">
+      <Filter>Source Files\gui\main_menu_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\main_menu_screen\main_menuViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\main_menu_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\model\QRCodeData.cpp">
+      <Filter>Source Files\gui\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\common\QRCodeWidget.cpp">
+      <Filter>Source Files\gui\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\pinsetupnotesparttwo_screen\PinSetupNotesPartTwoPresenter.cpp">
+      <Filter>Source Files\gui\pinsetupnotesparttwo_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\pinsetupnotesparttwo_screen\PinSetupNotesPartTwoView.cpp">
+      <Filter>Source Files\gui\pinsetupnotesparttwo_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\pinsetupnotesparttwo_screen\PinSetupNotesPartTwoViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\pinsetupnotesparttwo_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\pinsetupcompletenotes_screen\PinSetupCompleteNotesPresenter.cpp">
+      <Filter>Source Files\gui\pinsetupcompletenotes_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\pinsetupcompletenotes_screen\PinSetupCompleteNotesView.cpp">
+      <Filter>Source Files\gui\pinsetupcompletenotes_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\pinsetupcompletenotes_screen\PinSetupCompleteNotesViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\pinsetupcompletenotes_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\seedphrasesetupdisplay_screen\SeedPhraseSetupDisplayPresenter.cpp">
+      <Filter>Source Files\gui\seedphrasesetupdisplay_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\seedphrasesetupdisplay_screen\SeedPhraseSetupDisplayView.cpp">
+      <Filter>Source Files\gui\seedphrasesetupdisplay_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\seedphrasesetupdisplay_screen\SeedPhraseSetupDisplayViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\seedphrasesetupdisplay_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\SeedWordCustomContainer.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\SeedWordCustomContainerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\PinPadCustomContainer.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\PinPadCustomContainerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\unlockscreen_screen\unlockScreenPresenter.cpp">
+      <Filter>Source Files\gui\unlockscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\unlockscreen_screen\unlockScreenView.cpp">
+      <Filter>Source Files\gui\unlockscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\unlockscreen_screen\unlockScreenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\unlockscreen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\antiphishingemoji_screen\AntiPhishingEmojiPresenter.cpp">
+      <Filter>Source Files\gui\antiphishingemoji_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\antiphishingemoji_screen\AntiPhishingEmojiView.cpp">
+      <Filter>Source Files\gui\antiphishingemoji_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\antiphishingemoji_screen\AntiPhishingEmojiViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\antiphishingemoji_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\pinsetup_screen\PinSetupPresenter.cpp">
+      <Filter>Source Files\gui\pinsetup_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\pinsetup_screen\PinSetupView.cpp">
+      <Filter>Source Files\gui\pinsetup_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\pinsetup_screen\PinSetupViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\pinsetup_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -634,15 +790,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\FrontendHeapBase.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp">
-      <Filter>Header Files\gui\main_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp">
-      <Filter>Header Files\gui\main_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\main_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\model\Model.hpp">
       <Filter>Header Files\gui\model</Filter>
     </ClInclude>
@@ -651,6 +798,87 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp">
       <Filter>Header Files\generated\gui_generated\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\main_menu_screen\main_menuPresenter.hpp">
+      <Filter>Header Files\gui\main_menu_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\main_menu_screen\main_menuView.hpp">
+      <Filter>Header Files\gui\main_menu_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_menu_screen\main_menuViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\main_menu_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\model\QRCodeData.hpp">
+      <Filter>Header Files\gui\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\common\QRCodeWidget.hpp">
+      <Filter>Header Files\gui\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\pinsetupnotesparttwo_screen\PinSetupNotesPartTwoPresenter.hpp">
+      <Filter>Header Files\gui\pinsetupnotesparttwo_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\pinsetupnotesparttwo_screen\PinSetupNotesPartTwoView.hpp">
+      <Filter>Header Files\gui\pinsetupnotesparttwo_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\pinsetupnotesparttwo_screen\PinSetupNotesPartTwoViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\pinsetupnotesparttwo_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\pinsetupcompletenotes_screen\PinSetupCompleteNotesPresenter.hpp">
+      <Filter>Header Files\gui\pinsetupcompletenotes_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\pinsetupcompletenotes_screen\PinSetupCompleteNotesView.hpp">
+      <Filter>Header Files\gui\pinsetupcompletenotes_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\pinsetupcompletenotes_screen\PinSetupCompleteNotesViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\pinsetupcompletenotes_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\seedphrasesetupdisplay_screen\SeedPhraseSetupDisplayPresenter.hpp">
+      <Filter>Header Files\gui\seedphrasesetupdisplay_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\seedphrasesetupdisplay_screen\SeedPhraseSetupDisplayView.hpp">
+      <Filter>Header Files\gui\seedphrasesetupdisplay_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\seedphrasesetupdisplay_screen\SeedPhraseSetupDisplayViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\seedphrasesetupdisplay_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\SeedWordCustomContainer.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SeedWordCustomContainerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\PinPadCustomContainer.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\PinPadCustomContainerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\unlockscreen_screen\unlockScreenPresenter.hpp">
+      <Filter>Header Files\gui\unlockscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\unlockscreen_screen\unlockScreenView.hpp">
+      <Filter>Header Files\gui\unlockscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\unlockscreen_screen\unlockScreenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\unlockscreen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\antiphishingemoji_screen\AntiPhishingEmojiPresenter.hpp">
+      <Filter>Header Files\gui\antiphishingemoji_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\antiphishingemoji_screen\AntiPhishingEmojiView.hpp">
+      <Filter>Header Files\gui\antiphishingemoji_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\antiphishingemoji_screen\AntiPhishingEmojiViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\antiphishingemoji_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\pinsetup_screen\PinSetupPresenter.hpp">
+      <Filter>Header Files\gui\pinsetup_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\pinsetup_screen\PinSetupView.hpp">
+      <Filter>Header Files\gui\pinsetup_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\pinsetup_screen\PinSetupViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\pinsetup_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

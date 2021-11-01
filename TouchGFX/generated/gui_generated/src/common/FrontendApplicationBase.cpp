@@ -8,9 +8,21 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Texts.hpp>
 #include <touchgfx/hal/HAL.hpp>
-#include <platform/driver/lcd/LCD16bpp.hpp>
-#include <gui/main_screen/MainView.hpp>
-#include <gui/main_screen/MainPresenter.hpp>
+#include<platform/driver/lcd/LCD24bpp.hpp>
+#include <gui/unlockscreen_screen/unlockScreenView.hpp>
+#include <gui/unlockscreen_screen/unlockScreenPresenter.hpp>
+#include <gui/pinsetup_screen/PinSetupView.hpp>
+#include <gui/pinsetup_screen/PinSetupPresenter.hpp>
+#include <gui/pinsetupnotesparttwo_screen/PinSetupNotesPartTwoView.hpp>
+#include <gui/pinsetupnotesparttwo_screen/PinSetupNotesPartTwoPresenter.hpp>
+#include <gui/pinsetupcompletenotes_screen/PinSetupCompleteNotesView.hpp>
+#include <gui/pinsetupcompletenotes_screen/PinSetupCompleteNotesPresenter.hpp>
+#include <gui/seedphrasesetupdisplay_screen/SeedPhraseSetupDisplayView.hpp>
+#include <gui/seedphrasesetupdisplay_screen/SeedPhraseSetupDisplayPresenter.hpp>
+#include <gui/main_menu_screen/main_menuView.hpp>
+#include <gui/main_menu_screen/main_menuPresenter.hpp>
+#include <gui/antiphishingemoji_screen/AntiPhishingEmojiView.hpp>
+#include <gui/antiphishingemoji_screen/AntiPhishingEmojiPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -20,24 +32,50 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
       frontendHeap(heap),
       model(m)
 {
-    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_LANDSCAPE);
+    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
     touchgfx::Texts::setLanguage(GB);
-    reinterpret_cast<touchgfx::LCD16bpp&>(touchgfx::HAL::lcd()).enableTextureMapperAll();
+    reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableTextureMapperAll();
 }
 
 /*
  * Screen Transition Declarations
  */
 
-// Main
+// unlockScreen
 
-void FrontendApplicationBase::gotoMainScreenNoTransition()
+void FrontendApplicationBase::gotounlockScreenScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoMainScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotounlockScreenScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoMainScreenNoTransitionImpl()
+void FrontendApplicationBase::gotounlockScreenScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<MainView, MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<unlockScreenView, unlockScreenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// PinSetup
+
+void FrontendApplicationBase::gotoPinSetupScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoPinSetupScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoPinSetupScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<PinSetupView, PinSetupPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// SeedPhraseSetupDisplay
+
+void FrontendApplicationBase::gotoSeedPhraseSetupDisplayScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoSeedPhraseSetupDisplayScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoSeedPhraseSetupDisplayScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<SeedPhraseSetupDisplayView, SeedPhraseSetupDisplayPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

@@ -2,7 +2,7 @@
 * Copyright (c) 2018(-2021) STMicroelectronics.
 * All rights reserved.
 *
-* This file is part of the TouchGFX 4.18.0 distribution.
+* This file is part of the TouchGFX 4.17.0 distribution.
 *
 * This software is licensed under terms that can be found in the LICENSE file in
 * the root directory of this software component.
@@ -27,42 +27,18 @@ void PainterGRAY2Bitmap::setBitmap(const Bitmap& bmp)
     DisplayTransformation::transformDisplayToFrameBuffer(bitmapRectToFrameBuffer);
 }
 
-void PainterGRAY2Bitmap::setOffset(int16_t x, int16_t y)
-{
-    xOffset = x;
-    yOffset = y;
-}
-
-void PainterGRAY2Bitmap::setTiled(bool tiled)
-{
-    isTiled = tiled;
-}
-
 void PainterGRAY2Bitmap::render(uint8_t* ptr, int x, int xAdjust, int y, unsigned count, const uint8_t* covers)
 {
-    currentX = x + areaOffsetX + xOffset;
-    currentY = y + areaOffsetY + yOffset;
-
+    currentX = x + areaOffsetX;
+    currentY = y + areaOffsetY;
     x += xAdjust;
-
-    if (!isTiled && currentX < 0)
-    {
-        if (count < (unsigned int)-currentX)
-        {
-            return;
-        }
-        count += currentX;
-        covers -= currentX;
-        x -= currentX;
-        currentX = 0;
-    }
 
     if (!renderInit())
     {
         return;
     }
 
-    if (!isTiled && currentX + (int)count > bitmapRectToFrameBuffer.width)
+    if (currentX + (int)count > bitmapRectToFrameBuffer.width)
     {
         count = bitmapRectToFrameBuffer.width - currentX;
     }
@@ -88,7 +64,6 @@ void PainterGRAY2Bitmap::render(uint8_t* ptr, int x, int xAdjust, int y, unsigne
                     LCD2bpp::setPixel(ptr, x, LCD::div255((gray * alpha + p_gray * ialpha) * 0x55) >> 6);
                 }
                 currentX++;
-                currentX %= bitmapRectToFrameBuffer.width;
                 x++;
             } while (--count != 0);
         }
@@ -103,7 +78,6 @@ void PainterGRAY2Bitmap::render(uint8_t* ptr, int x, int xAdjust, int y, unsigne
                 const uint8_t p_gray = LCD2bpp::getPixel(ptr, x);
                 LCD2bpp::setPixel(ptr, x, LCD::div255((gray * alpha + p_gray * ialpha) * 0x55) >> 6);
                 currentX++;
-                currentX %= bitmapRectToFrameBuffer.width;
                 x++;
             } while (--count != 0);
         }
@@ -129,7 +103,6 @@ void PainterGRAY2Bitmap::render(uint8_t* ptr, int x, int xAdjust, int y, unsigne
                     LCD2bpp::setPixel(ptr, x, LCD::div255((gray * alpha + p_gray * ialpha) * 0x55) >> 6);
                 }
                 currentX++;
-                currentX %= bitmapRectToFrameBuffer.width;
                 x++;
             } while (--count != 0);
         }
@@ -144,7 +117,6 @@ void PainterGRAY2Bitmap::render(uint8_t* ptr, int x, int xAdjust, int y, unsigne
                 const uint8_t p_gray = LCD2bpp::getPixel(ptr, x);
                 LCD2bpp::setPixel(ptr, x, LCD::div255((gray * alpha + p_gray * ialpha) * 0x55) >> 6);
                 currentX++;
-                currentX %= bitmapRectToFrameBuffer.width;
                 x++;
             } while (--count != 0);
         }
@@ -161,14 +133,9 @@ bool PainterGRAY2Bitmap::renderInit()
         return false;
     }
 
-    if (isTiled)
+    if ((currentX >= bitmapRectToFrameBuffer.width) || (currentY >= bitmapRectToFrameBuffer.height))
     {
-        // Modulus, also handling negative values
-        currentX = ((currentX % bitmapRectToFrameBuffer.width) + bitmapRectToFrameBuffer.width) % bitmapRectToFrameBuffer.width;
-        currentY = ((currentY % bitmapRectToFrameBuffer.height) + bitmapRectToFrameBuffer.height) % bitmapRectToFrameBuffer.height;
-    }
-    else if ((currentX >= bitmapRectToFrameBuffer.width) || (currentY < 0) || (currentY >= bitmapRectToFrameBuffer.height))
-    {
+        // Outside bitmap area, do not draw anything
         return false;
     }
 
@@ -191,4 +158,27 @@ bool PainterGRAY2Bitmap::renderInit()
     return false;
 }
 
+bool PainterGRAY2Bitmap::renderNext(uint8_t& gray, uint8_t& alpha)
+{
+    if (currentX >= bitmapRectToFrameBuffer.width)
+    {
+        return false;
+    }
+
+    if (bitmapGRAY2Pointer != 0)
+    {
+        gray = LCD2bpp::getPixel(bitmapGRAY2Pointer, currentX);
+        if (bitmapAlphaPointer)
+        {
+            alpha = LCD2bpp::getPixel(bitmapAlphaPointer, currentX);
+            alpha *= 0x55; // Upscale from 00-03 to 00-FF
+        }
+        else
+        {
+            alpha = 0xFF; // No alpha per pixel in the image, it is solid
+        }
+        return true;
+    }
+    return false;
+}
 } // namespace touchgfx

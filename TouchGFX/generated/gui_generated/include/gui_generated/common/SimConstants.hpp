@@ -6,6 +6,6 @@
 
 static unsigned short SIM_WIDTH = 480;
 static unsigned short SIM_HEIGHT = 272;
-#define SIM_TITLE "MyApplication"
+#define SIM_TITLE "coinemu"
 
 #endif // SIMCONSTANTS_HPP

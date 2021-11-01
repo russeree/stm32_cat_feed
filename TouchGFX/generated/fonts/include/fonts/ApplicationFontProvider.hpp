@@ -14,12 +14,22 @@ class FlashDataReader;
 struct Typography
 {
     static const touchgfx::FontId DEFAULT = 0;
+    static const touchgfx::FontId LARGE = 1;
+    static const touchgfx::FontId SMALL = 2;
+    static const touchgfx::FontId VERY_SMALL = 3;
+    static const touchgfx::FontId SEED_WORDS = 4;
+    static const touchgfx::FontId BIGGER = 5;
 };
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId DEFAULT = 0; // Asap_Regular_80_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 1;
+    static const touchgfx::FontId DEFAULT = 0;    // roboto_medium_20_4bpp
+    static const touchgfx::FontId LARGE = 1;      // roboto_medium_40_4bpp
+    static const touchgfx::FontId SMALL = 2;      // roboto_medium_12_4bpp
+    static const touchgfx::FontId VERY_SMALL = 3; // roboto_medium_10_4bpp
+    static const touchgfx::FontId SEED_WORDS = 4; // cour_28_4bpp
+    static const touchgfx::FontId BIGGER = 5;     // roboto_medium_28_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 6;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

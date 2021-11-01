@@ -18,9 +18,13 @@
 /* USER CODE BEGIN STM32TouchController */
 
 #include <STM32TouchController.hpp>
+#include <stm32746g_discovery_lcd.h>
+#include <stm32746g_discovery_ts.h>
 
 void STM32TouchController::init()
 {
+
+	BSP_TS_Init(BSP_LCD_GetXSize(),BSP_LCD_GetYSize());
     /**
      * Initialize touch controller and driver
      *
@@ -29,6 +33,13 @@ void STM32TouchController::init()
 
 bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
 {
+	TS_StateTypeDef state = {0};
+	BSP_TS_GetState(&state);
+	if(state.touchDetected){
+		x = state.touchX[0];
+		y = state.touchY[0];
+		return true;
+	}
     /**
      * By default sampleTouch returns false,
      * return true if a touch has been detected, otherwise false.

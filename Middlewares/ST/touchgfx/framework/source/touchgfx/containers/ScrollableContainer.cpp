@@ -2,7 +2,7 @@
 * Copyright (c) 2018(-2021) STMicroelectronics.
 * All rights reserved.
 *
-* This file is part of the TouchGFX 4.18.0 distribution.
+* This file is part of the TouchGFX 4.17.0 distribution.
 *
 * This software is licensed under terms that can be found in the LICENSE file in
 * the root directory of this software component.
@@ -21,6 +21,7 @@
 #include <touchgfx/events/ClickEvent.hpp>
 #include <touchgfx/events/DragEvent.hpp>
 #include <touchgfx/events/GestureEvent.hpp>
+#include <touchgfx/hal/HAL.hpp>
 
 namespace touchgfx
 {
@@ -77,7 +78,60 @@ void ScrollableContainer::handleClickEvent(const ClickEvent& event)
             Application::getInstance()->unregisterTimerWidget(this);
         }
 
-        getLastChildNear(event.getX(), event.getY(), &pressedDrawable, &fingerAdjustmentX, &fingerAdjustmentY);
+        const int fingerSize = HAL::getInstance()->getFingerSize();
+        fingerAdjustmentX = 0;
+        fingerAdjustmentY = 0;
+
+        const int minimumDistance = 3;
+        if ((fingerSize - 1) >= minimumDistance)
+        {
+            pressedDrawable = 0;
+
+            const int maximumSquares = 3;
+            const int numberOfSquares = MIN(maximumSquares, (fingerSize - 1) / minimumDistance);
+            uint32_t bestDistance = 0xFFFFFFFF;
+            Drawable* last = 0;
+
+            Rect me(0, 0, getWidth(), getHeight());
+            Rect meAbs = me;
+            translateRectToAbsolute(meAbs);
+
+            for (int squareNumber = 1; squareNumber <= numberOfSquares; squareNumber++)
+            {
+                int distance = ((squareNumber * fingerSize) / numberOfSquares);
+                const int samplePoints[10][2] = { { 0, 0 }, { -1, -1 }, { 0, -1 }, { 1, -1 }, { -1, 0 }, { 0, 0 }, { 1, 0 }, { -1, 1 }, { 0, 1 }, { 1, 1 } };
+
+                for (int sampleIndex = squareNumber - 1; sampleIndex < 10; sampleIndex += 2)
+                {
+                    Drawable* d = 0;
+                    int16_t deltaX = samplePoints[sampleIndex][0] * distance;
+                    int16_t deltaY = samplePoints[sampleIndex][1] * distance;
+                    if (me.intersect(event.getX() + deltaX, event.getY() + deltaY))
+                    {
+                        Container::getLastChild(event.getX() + deltaX, event.getY() + deltaY, &d);
+                        if (d && d != last && d != this)
+                        {
+                            Rect absRect = d->getAbsoluteRect();
+                            int x = meAbs.x + event.getX() - (absRect.x + (absRect.width / 2));
+                            int y = meAbs.y + event.getY() - (absRect.y + (absRect.height / 2));
+                            uint32_t dist = x * x + y * y;
+                            if (dist < bestDistance)
+                            {
+                                last = d;
+                                bestDistance = dist;
+                                pressedDrawable = d;
+                                fingerAdjustmentX = deltaX;
+                                fingerAdjustmentY = deltaY;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            Container::getLastChild(event.getX(), event.getY(), &pressedDrawable);
+        }
 
         if (pressedDrawable == this)
         {
@@ -90,8 +144,7 @@ void ScrollableContainer::handleClickEvent(const ClickEvent& event)
             pressedX = event.getX();
             pressedY = event.getY();
             Rect r = pressedDrawable->getAbsoluteRect();
-            Rect me = getAbsoluteRect();
-            ClickEvent relative(event.getType(), event.getX() + fingerAdjustmentX - (r.x - me.x), event.getY() + fingerAdjustmentY - (r.y - me.y));
+            ClickEvent relative(event.getType(), event.getX() + rect.x + fingerAdjustmentX - r.x, event.getY() + rect.y + fingerAdjustmentY - r.y);
             pressedDrawable->handleClickEvent(relative);
             lastDraggableChild = pressedDrawable;
         }
@@ -105,8 +158,7 @@ void ScrollableContainer::handleClickEvent(const ClickEvent& event)
         if (pressedDrawable)
         {
             Rect r = pressedDrawable->getAbsoluteRect();
-            Rect me = getAbsoluteRect();
-            ClickEvent relative(event.getType(), event.getX() + fingerAdjustmentX - (r.x - me.x), event.getY() + fingerAdjustmentY - (r.y - me.y));
+            ClickEvent relative(event.getType(), event.getX() + rect.x + fingerAdjustmentX - r.x, event.getY() + rect.y + fingerAdjustmentY - r.y);
             pressedDrawable->handleClickEvent(relative);
         }
 
@@ -136,11 +188,10 @@ void ScrollableContainer::handleDragEvent(const DragEvent& event)
     {
         // Also send this drag event to the appropriate child widget
         Rect r = pressedDrawable->getAbsoluteRect();
-        Rect me = getAbsoluteRect();
-        int16_t oldX = event.getOldX() + fingerAdjustmentX - (r.x - me.x);
-        int16_t oldY = event.getOldY() + fingerAdjustmentY - (r.y - me.y);
-        int16_t newX = canScrollX ? oldX : event.getNewX() + fingerAdjustmentX - (r.x - me.x);
-        int16_t newY = canScrollY ? oldY : event.getNewY() + fingerAdjustmentY - (r.y - me.y);
+        int16_t oldX = event.getOldX() + rect.x + fingerAdjustmentX - r.x;
+        int16_t oldY = event.getOldY() + rect.y + fingerAdjustmentY - r.y;
+        int16_t newX = canScrollX ? oldX : event.getNewX() + rect.x + fingerAdjustmentX - r.x;
+        int16_t newY = canScrollY ? oldY : event.getNewY() + rect.y + fingerAdjustmentY - r.y;
 
         // but only in the direction(s) where the scrollable container itself
         // cannot scroll.
@@ -481,6 +532,8 @@ bool ScrollableContainer::doScroll(int16_t deltaX, int16_t deltaY)
 
     if (deltaX || deltaY)
     {
+        scrolledXDistance += deltaX;
+        scrolledYDistance += deltaY;
         moveChildrenRelative(deltaX, deltaY);
 
         invalidateScrollbars();
@@ -491,44 +544,39 @@ bool ScrollableContainer::doScroll(int16_t deltaX, int16_t deltaY)
 
 void ScrollableContainer::childGeometryChanged()
 {
-    int deltaX = 0;
-    int deltaY = 0;
-    Rect contained = getChildrenContainedArea();
+    Rect contained = getContainedArea();
+    // If children are not aligned top left, make sure they are
     if (contained.y > 0)
     {
-        // Make sure we haven't scrolled above the top
-        deltaY = contained.y;
+        moveChildrenRelative(0, -contained.y);
     }
-    else if (contained.bottom() < rect.height)
+    if (contained.x > 0)
     {
-        // Make sure we haven't scrolled below the bottom
-        deltaY = contained.bottom() - rect.height;
+        moveChildrenRelative(-contained.x, 0);
+    }
+    // Make sure we haven't scrolled below the bottom
+    if (contained.bottom() < rect.height)
+    {
+        int16_t deltaY = contained.bottom() - rect.height;
         if (contained.y > deltaY)
         {
             deltaY = contained.y;
         }
+        scrolledYDistance -= deltaY;
+        moveChildrenRelative(0, -deltaY);
     }
-
-    if (contained.x > 0)
+    // Make sure we haven't scrolled too far to the right
+    if (contained.right() < rect.width)
     {
-        // Make sure we haven't scrolled too far to the left
-        deltaX = contained.x;
-    }
-    else if (contained.right() < rect.width)
-    {
-        // Make sure we haven't scrolled too far to the right
-        deltaX = contained.right() - rect.width;
+        int deltaX = contained.right() - rect.width;
         if (contained.x > deltaX)
         {
             deltaX = contained.x;
         }
+        scrolledXDistance -= deltaX;
+        moveChildrenRelative(-deltaX, 0);
     }
-
-    if (deltaX != 0 || deltaY != 0)
-    {
-        moveChildrenRelative(-deltaX, -deltaY);
-        invalidateScrollbars();
-    }
+    invalidateScrollbars();
 }
 
 void ScrollableContainer::add(Drawable& d)
@@ -543,20 +591,17 @@ void ScrollableContainer::add(Drawable& d)
 
 Rect ScrollableContainer::getContainedArea() const
 {
-    Rect contained(0, 0, rect.width, rect.height);
-    contained.expandToFit(getChildrenContainedArea());
-    return contained;
-}
-
-Rect ScrollableContainer::getChildrenContainedArea() const
-{
+    Drawable* d = firstChild;
     Rect contained(0, 0, 0, 0);
-    for (Drawable* d = firstChild; d; d = d->getNextSibling())
+    Rect r(0, 0, rect.width, rect.height);
+    contained.expandToFit(r);
+    while (d)
     {
         if ((d != &xSlider) && (d != &ySlider) && (d->isVisible()))
         {
             contained.expandToFit(d->getRect());
         }
+        d = d->getNextSibling();
     }
     return contained;
 }
@@ -564,59 +609,60 @@ Rect ScrollableContainer::getChildrenContainedArea() const
 void ScrollableContainer::reset()
 {
     moveChildrenRelative(-scrolledXDistance, -scrolledYDistance);
+    scrolledXDistance = 0;
+    scrolledYDistance = 0;
     invalidateScrollbars();
 }
 
 void ScrollableContainer::moveChildrenRelative(int16_t deltaX, int16_t deltaY)
 {
-    for (Drawable* d = firstChild; d; d = d->getNextSibling())
+    Drawable* d = firstChild;
+    while (d)
     {
         if ((d != &xSlider) && (d != &ySlider))
         {
             d->moveRelative(deltaX, deltaY);
         }
+        d = d->getNextSibling();
     }
-    scrolledXDistance += deltaX;
-    scrolledYDistance += deltaY;
 }
 
 void ScrollableContainer::handleTickEvent()
 {
-    if (!animate)
+    if (animate)
     {
-        return;
-    }
-    // Calculate new position or stop animation
-    animationCounter++;
-    if (animationCounter <= scrollDuration)
-    {
-        // Calculate value in [beginningValue ; (beginningValue+targetValue)]
-        int16_t calculatedValue = EasingEquations::cubicEaseOut(animationCounter, beginningValue, targetValue, scrollDuration);
-
-        // Note: Result of "calculatedValue & 1" is compiler dependent for negative values of calculatedValue
-        if (calculatedValue % 2)
+        // Calculate new position or stop animation
+        animationCounter++;
+        if (animationCounter <= scrollDuration)
         {
-            // Optimization: calculatedValue is odd, add 1/-1 to move drawables modulo 32 bits in framebuffer
-            calculatedValue += (calculatedValue > 0) ? 1 : -1;
+            // Calculate value in [beginningValue ; (beginningValue+targetValue)]
+            int16_t calculatedValue = EasingEquations::cubicEaseOut(animationCounter, beginningValue, targetValue, scrollDuration);
+
+            // Note: Result of "calculatedValue & 1" is compiler dependent for negative values of calculatedValue
+            if (calculatedValue % 2)
+            {
+                // Optimization: calculatedValue is odd, add 1/-1 to move drawables modulo 32 bits in framebuffer
+                calculatedValue += (calculatedValue > 0) ? 1 : -1;
+            }
+
+            // Convert to delta value relative to current X or Y
+            int16_t scrollX = (accelDirection == GestureEvent::SWIPE_VERTICAL) ? 0 : (calculatedValue - getContainedArea().x);
+            int16_t scrollY = (accelDirection == GestureEvent::SWIPE_HORIZONTAL) ? 0 : (calculatedValue - getContainedArea().y);
+
+            // Perform the actual animation step, stop animation if
+            // scrolling was not possible (doScroll invalidates children)
+            animate = doScroll(scrollX, scrollY);
+        }
+        else
+        {
+            animate = false;
         }
 
-        // Convert to delta value relative to current X or Y
-        int16_t scrollX = (accelDirection == GestureEvent::SWIPE_VERTICAL) ? 0 : (calculatedValue - getContainedArea().x);
-        int16_t scrollY = (accelDirection == GestureEvent::SWIPE_HORIZONTAL) ? 0 : (calculatedValue - getContainedArea().y);
-
-        // Perform the actual animation step, stop animation if
-        // scrolling was not possible (doScroll invalidates children)
-        animate = doScroll(scrollX, scrollY);
-    }
-    else
-    {
-        animate = false;
-    }
-
-    if (!animate)
-    {
-        Application::getInstance()->unregisterTimerWidget(this);
-        animationCounter = 0;
+        if (!animate)
+        {
+            Application::getInstance()->unregisterTimerWidget(this);
+            animationCounter = 0;
+        }
     }
 }
 

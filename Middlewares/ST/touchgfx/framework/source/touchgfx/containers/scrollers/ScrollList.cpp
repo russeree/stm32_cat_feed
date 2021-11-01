@@ -2,7 +2,7 @@
 * Copyright (c) 2018(-2021) STMicroelectronics.
 * All rights reserved.
 *
-* This file is part of the TouchGFX 4.18.0 distribution.
+* This file is part of the TouchGFX 4.17.0 distribution.
 *
 * This software is licensed under terms that can be found in the LICENSE file in
 * the root directory of this software component.
@@ -120,27 +120,29 @@ int32_t ScrollList::getPositionForItem(int16_t itemIndex)
         }
         return currentOffset + leftScrollDistance;
     }
-
-    if (itemOffset > currentOffset) // First item on screen is higher than the itemIndex. Scroll itemIndex to top position
+    else
     {
-        return itemOffset;
-    }
-    int16_t numberOfVisibleItems = activeWidgetSize / itemSize;
-    int32_t itemOffsetAtEnd = itemOffset;
-    if (numberOfVisibleItems > 0)
-    {
-        if (snapping)
+        if (itemOffset > currentOffset) // First item on screen is higher than the itemIndex. Scroll itemIndex to top position
         {
-            itemOffsetAtEnd = itemOffset + (numberOfVisibleItems - 1) * itemSize;
+            return itemOffset;
         }
-        else
+        int16_t numberOfVisibleItems = activeWidgetSize / itemSize;
+        int32_t itemOffsetAtEnd = itemOffset;
+        if (numberOfVisibleItems > 0)
         {
-            itemOffsetAtEnd = itemOffset + activeWidgetSize - itemSize;
+            if (snapping)
+            {
+                itemOffsetAtEnd = itemOffset + (numberOfVisibleItems - 1) * itemSize;
+            }
+            else
+            {
+                itemOffsetAtEnd = itemOffset + activeWidgetSize - itemSize;
+            }
         }
-    }
-    if (itemOffsetAtEnd < currentOffset)
-    {
-        return itemOffsetAtEnd;
+        if (itemOffsetAtEnd < currentOffset)
+        {
+            return itemOffsetAtEnd;
+        }
     }
     return currentOffset;
 }

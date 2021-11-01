@@ -2,7 +2,7 @@
 * Copyright (c) 2018(-2021) STMicroelectronics.
 * All rights reserved.
 *
-* This file is part of the TouchGFX 4.18.0 distribution.
+* This file is part of the TouchGFX 4.17.0 distribution.
 *
 * This software is licensed under terms that can be found in the LICENSE file in
 * the root directory of this software component.
@@ -20,57 +20,56 @@ namespace touchgfx
 {
 void AnimatedImage::handleTickEvent()
 {
-    if (!running)
+    if (running)
     {
-        return;
-    }
-    ++ticksSinceUpdate;
-    if (ticksSinceUpdate != updateTicksInterval)
-    {
-        return;
-    }
-
-    ticksSinceUpdate = 0;
-    BitmapId currentId = getBitmap();
-
-    if (((currentId == endId) && !reverse) || ((currentId == startId) && reverse))
-    {
-        if (!loopAnimation)
+        ++ticksSinceUpdate;
+        if (ticksSinceUpdate != updateTicksInterval)
         {
-            Application::getInstance()->unregisterTimerWidget(this);
-            running = false;
+            return;
         }
 
-        if (animationDoneAction && animationDoneAction->isValid())
-        {
-            animationDoneAction->execute(*this);
-        }
+        ticksSinceUpdate = 0;
+        BitmapId currentId = getBitmap();
 
-        if (running && loopAnimation)
+        if (((currentId == endId) && !reverse) || ((currentId == startId) && reverse))
         {
-            if (reverse)
+            if (!loopAnimation)
             {
-                Image::setBitmap(Bitmap(endId));
+                Application::getInstance()->unregisterTimerWidget(this);
+                running = false;
             }
-            else
+
+            if (animationDoneAction && animationDoneAction->isValid())
             {
-                Image::setBitmap(Bitmap(startId));
+                animationDoneAction->execute(*this);
             }
-            invalidate();
-        }
-    }
-    else
-    {
-        if (reverse)
-        {
-            --currentId;
+
+            if (running && loopAnimation)
+            {
+                if (reverse)
+                {
+                    Image::setBitmap(Bitmap(endId));
+                }
+                else
+                {
+                    Image::setBitmap(Bitmap(startId));
+                }
+                invalidate();
+            }
         }
         else
         {
-            ++currentId;
+            if (reverse)
+            {
+                --currentId;
+            }
+            else
+            {
+                ++currentId;
+            }
+            Image::setBitmap(Bitmap(currentId));
+            invalidate();
         }
-        Image::setBitmap(Bitmap(currentId));
-        invalidate();
     }
 }
 
