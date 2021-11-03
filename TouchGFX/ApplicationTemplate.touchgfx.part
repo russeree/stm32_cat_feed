@@ -1,7 +1,7 @@
 
 {
   "Application": {
-    "Name": "coinemu",
+    "Name": "cat_feed",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "AvailableColorDepths": [ 24 ],
     "AvailableLCDs":
@@ -14,7 +14,7 @@
         "Height": 272
       }
     ],
-    "PostGenerateTargetCommand" : "touchgfx update_project --project-file=../coinemu.ioc --platform=m7",
+    "PostGenerateTargetCommand" : "touchgfx update_project --project-file=../cat_feed.ioc --platform=m7",
     "Family" : "STM32F7",
     "SubFamily" : "STM32F7x6"
   },

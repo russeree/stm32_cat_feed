@@ -12,20 +12,8 @@
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
-#include <gui/unlockscreen_screen/unlockScreenView.hpp>
-#include <gui/unlockscreen_screen/unlockScreenPresenter.hpp>
-#include <gui/pinsetup_screen/PinSetupView.hpp>
-#include <gui/pinsetup_screen/PinSetupPresenter.hpp>
-#include <gui/pinsetupnotesparttwo_screen/PinSetupNotesPartTwoView.hpp>
-#include <gui/pinsetupnotesparttwo_screen/PinSetupNotesPartTwoPresenter.hpp>
-#include <gui/pinsetupcompletenotes_screen/PinSetupCompleteNotesView.hpp>
-#include <gui/pinsetupcompletenotes_screen/PinSetupCompleteNotesPresenter.hpp>
-#include <gui/seedphrasesetupdisplay_screen/SeedPhraseSetupDisplayView.hpp>
-#include <gui/seedphrasesetupdisplay_screen/SeedPhraseSetupDisplayPresenter.hpp>
-#include <gui/main_menu_screen/main_menuView.hpp>
-#include <gui/main_menu_screen/main_menuPresenter.hpp>
-#include <gui/antiphishingemoji_screen/AntiPhishingEmojiView.hpp>
-#include <gui/antiphishingemoji_screen/AntiPhishingEmojiPresenter.hpp>
+#include <gui/main_screen/MainView.hpp>
+#include <gui/main_screen/MainPresenter.hpp>
 
 
 /**
@@ -48,14 +36,8 @@ public:
      * A list of all view types. Must end with meta::Nil.
      * @note All view types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< unlockScreenView,
-            touchgfx::meta::TypeList< PinSetupView,
-            touchgfx::meta::TypeList< PinSetupNotesPartTwoView,
-            touchgfx::meta::TypeList< PinSetupCompleteNotesView,
-            touchgfx::meta::TypeList< SeedPhraseSetupDisplayView,
-            touchgfx::meta::TypeList< main_menuView,
-            touchgfx::meta::TypeList< AntiPhishingEmojiView,
-            touchgfx::meta::Nil > > > > > >
+    typedef touchgfx::meta::TypeList< MainView,
+            touchgfx::meta::Nil
             > GeneratedViewTypes;
 
     /**
@@ -67,14 +49,8 @@ public:
      * A list of all presenter types. Must end with meta::Nil.
      * @note All presenter types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< unlockScreenPresenter,
-            touchgfx::meta::TypeList< PinSetupPresenter,
-            touchgfx::meta::TypeList< PinSetupNotesPartTwoPresenter,
-            touchgfx::meta::TypeList< PinSetupCompleteNotesPresenter,
-            touchgfx::meta::TypeList< SeedPhraseSetupDisplayPresenter,
-            touchgfx::meta::TypeList< main_menuPresenter,
-            touchgfx::meta::TypeList< AntiPhishingEmojiPresenter,
-            touchgfx::meta::Nil > > > > > >
+    typedef touchgfx::meta::TypeList< MainPresenter,
+            touchgfx::meta::Nil
             > GeneratedPresenterTypes;
 
     /**
@@ -97,7 +73,7 @@ public:
 
     virtual void gotoStartScreen(FrontendApplication& app)
     {
-        app.gotounlockScreenScreenNoTransition();
+        app.gotoMainScreenNoTransition();
     }
 protected:
     FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)

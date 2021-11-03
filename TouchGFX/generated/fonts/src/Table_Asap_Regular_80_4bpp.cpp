@@ -17,16 +17,13 @@ KEEP extern const touchgfx::GlyphNode glyphs_Asap_Regular_80_4bpp[] FONT_TABLE_L
 };
 
 // Asap_Regular_80_4bpp
-FONT_TABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::GlyphNode glyphs_Asap_Regular_80_4bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE;
-FONT_GLYPH_LOCATION_FLASH_PRAGMA
-KEEP extern const uint8_t unicodes_Asap_Regular_80_4bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
-FONT_SEARCHTABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const uint8_t* const unicodes_Asap_Regular_80_4bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
+extern const touchgfx::GlyphNode glyphs_Asap_Regular_80_4bpp[];
+extern const uint8_t unicodes_Asap_Regular_80_4bpp_0[];
+extern const uint8_t* const unicodes_Asap_Regular_80_4bpp[] = {
     unicodes_Asap_Regular_80_4bpp_0
 };
-FONT_KERNING_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::KerningNode kerning_Asap_Regular_80_4bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE;
+extern const touchgfx::KerningNode kerning_Asap_Regular_80_4bpp[];
+
 touchgfx::GeneratedFont& getFont_Asap_Regular_80_4bpp();
 
 touchgfx::GeneratedFont& getFont_Asap_Regular_80_4bpp()
